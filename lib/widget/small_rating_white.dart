@@ -33,7 +33,7 @@ class SmallRatingWhite extends StatelessWidget {
         child: Text(
           rating,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 12)
+          style: const TextStyle(fontSize: 12)
               .copyWith(color: isSelected ? primaryColor : Colors.black),
         ),
       ),
