@@ -81,3 +81,10 @@ class _MyAppState extends State<MyApp> {
   }
 }
 ```
+
+## Example how to use checklist_rating
+To use the ChecklistSetRating widget, you first need to import the package:
+
+https://github.com/nunutech40/checklist_rating/assets/49187517/3ae6730f-13db-4f70-bc9c-70b9abecbb3d
+
+
