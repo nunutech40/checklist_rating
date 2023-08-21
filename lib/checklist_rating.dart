@@ -50,33 +50,22 @@ class ChecklistRating extends StatelessWidget {
     }
   }
 
-  // Factory constructor to create a default instance of ChecklistRating.
-  factory ChecklistRating.defaultRating() {
-    return ChecklistRating(
-      titleChekbox: "Default Checkbox",
-      setRating: 5,
-    );
-  }
-
-  // Factory constructor to create a maximum rated instance of ChecklistRating.
-  factory ChecklistRating.customRating() {
-    return ChecklistRating(
-      titleChekbox: "Custom Checkbox",
-      setRating: 3,
-    );
-  }
-
   // Factory constructor to create a custom ChecklistRating.
-  factory ChecklistRating.custom(
-      {String? titleChekbox,
-      int? setRating,
-      bool? setChecked,
-      int? maxRatings}) {
+  factory ChecklistRating.custom({
+    String? titleChekbox,
+    int? setRating,
+    bool? setChecked,
+    int? maxRatings,
+    void Function(bool?)? onCheckboxChanged,
+    void Function(int)? onRatingChecked,
+  }) {
     return ChecklistRating(
       titleChekbox: titleChekbox,
       setChecked: setChecked ?? false,
       setRating: setRating ?? 0,
       maxRatings: maxRatings ?? 5,
+      onCheckboxChanged: onCheckboxChanged,
+      onRatingChecked: onRatingChecked,
     );
   }
 

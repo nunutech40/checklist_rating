@@ -6,7 +6,7 @@ Add checklist_rating to your pubspec.yaml dependencies:
 
 ```yaml
 dependencies:
-  checklist_rating: ^0.0.5
+  checklist_rating: ^0.0.6
 ```
 
 Then run:

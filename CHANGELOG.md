@@ -20,3 +20,6 @@ flutter pub publish --dry-run
 
 ## 0.0.5
 - refactor code without static, and add factory to class ChecklistSetrating to create different variant of ChecklistSetrating
+
+## 0.0.6
+- refactor checklistrating, there's error not implement oncheck + onsetrating
