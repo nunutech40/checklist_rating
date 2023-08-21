@@ -2,7 +2,7 @@ library checklist_rating;
 
 import 'package:checklist_rating/widget/checkbox_default.dart';
 import 'package:checklist_rating/widget/common/extension.dart';
-import 'package:checklist_rating/widget/small_rating_white.dart';
+import 'package:checklist_rating/widget/small_rating.dart';
 import 'package:flutter/material.dart';
 
 /// `ChecklistRating` is a widget that presents a flexible row layout containing
@@ -98,7 +98,7 @@ class ChecklistRating extends StatelessWidget {
               maxRatings,
               (index) => Row(
                 children: [
-                  SmallRatingWhite(
+                  SmallRating(
                     rating: '${index + 1}',
                     isSelected: setRating >= index + 1,
                     onTap: () => onRatingChecked?.call(index + 1),

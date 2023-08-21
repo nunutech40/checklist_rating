@@ -4,24 +4,37 @@ import 'common/styles.dart';
 
 class SmallRating extends StatelessWidget {
   final String rating;
-  const SmallRating({
-    super.key,
-    required this.rating,
-  });
+  final bool isSelected;
+  final VoidCallback? onTap; // Keep the same callback type
+
+  const SmallRating(
+      {Key? key,
+      required this.rating,
+      this.isSelected = false,
+      this.onTap}) // Keep the same argument type
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: e2Gray,
-        borderRadius: BorderRadius.circular(6.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 12.0),
+    return InkWell(
+      onTap: onTap, // This stays the same
+      child: Container(
+        height: 24.0,
+        width: 24.0,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isSelected ? lighPrimaryColor : Colors.white,
+          borderRadius: BorderRadius.circular(6.0),
+          border: Border.all(
+            color: isSelected ? primaryColor : e2Gray,
+            width: 1.0,
+          ),
+        ),
         child: Text(
           rating,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 12)
+              .copyWith(color: isSelected ? primaryColor : Colors.black),
         ),
       ),
     );
