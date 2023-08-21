@@ -31,9 +31,12 @@ class ItemRowSetRating extends StatelessWidget {
     this.setRating = 0,
     this.onCheckboxChanged,
     this.maxRatings = 5,
-  })  : assert(maxRatings >= 3 &&
-            maxRatings <= 5), // Ensuring maxRatings is between 3 and 5
-        super(key: key);
+  }) : super(key: key) {
+    if (maxRatings < 3 || maxRatings > 5) {
+      throw ArgumentError(
+          'maxRatings should be between 3 and 5 inclusive. Received: $maxRatings.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -24,6 +24,7 @@ class ChecklistSetRating {
   ///
   /// - `onCheckboxChanged`: A callback that is triggered when the checkbox's state changes. Provides the new checkbox state as an argument.
   ///
+  /// - `maxRatings`: The number of rating checkboxes to show. Must be between 3 and 5 inclusive. Defaults to `5`.
   /// Returns a new [ItemRowSetRating] widget.
   static ItemRowSetRating setRatingCheckList({
     Key? key,
