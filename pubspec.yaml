@@ -1,6 +1,6 @@
 name: checklist_rating
 description: Create checklist box with set rating / review rating.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/nunutech40/checklist_rating.git
 
 environment:

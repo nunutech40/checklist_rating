@@ -5,8 +5,8 @@ A Flutter package that provides a customizable checklist rating widget.
 Add checklist_rating to your pubspec.yaml dependencies:
 
 ```yaml
-dev_dependencies:
-  checklist_rating: ^0.0.4
+dependencies:
+  checklist_rating: ^0.0.5
 ```
 
 Then run:
@@ -27,16 +27,17 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int rating = 0;             // State for storing rating value
-  bool isChecked = false;     // State for storing checkbox state
+  int rating = 0;
+  bool isChecked = false;
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,20 +53,21 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ChecklistSetRating.setRatingCheckList(
+                ChecklistRating.custom(
                   titleChekbox: "Sample Checklist",
                   onCheckboxChanged: (value) {
-                    // Handle the change in checkbox state here
+                    // Handle set checklist here
                     setState(() {
                       isChecked = value ?? false;
                     });
                   },
-                  setRating: rating,      // Pass the current rating state
-                  isChecked: isChecked,  // Pass the current checkbox state
-                  onRatingChecked: (ratingValue) {
-                    // Handle the change in rating here
+                  setRating: rating,
+                  setChecked: isChecked,
+                  maxRatings: 5,
+                  onRatingChecked: (rating) {
+                    // Handle rating changes here
                     setState(() {
-                      this.rating = ratingValue;
+                      this.rating = rating;
                     });
                   },
                 ),
@@ -77,6 +79,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 ```
 
 ## Example how to use checklist_rating

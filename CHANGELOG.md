@@ -17,3 +17,6 @@ flutter pub publish --dry-run
 ## 0.0.4
 
 - change version for update readme installation
+
+## 0.0.5
+- refactor code without static, and add factory to class ChecklistSetrating to create different variant of ChecklistSetrating
