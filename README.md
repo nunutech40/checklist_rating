@@ -6,10 +6,7 @@ Add checklist_rating to your pubspec.yaml dependencies:
 
 ```yaml
 dev_dependencies:
-  checklist_rating:
-    git:
-        url: https://github.com/nunutech40/checklist_rating.git
-        ref: main
+  checklist_rating: ^0.0.3
 ```
 
 Then run:
