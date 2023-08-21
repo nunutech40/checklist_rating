@@ -23,3 +23,6 @@ flutter pub publish --dry-run
 
 ## 0.0.6
 - refactor checklistrating, there's error not implement oncheck + onsetrating
+
+## 0.0.7
+- remove redundant widget i forgot to delete.
