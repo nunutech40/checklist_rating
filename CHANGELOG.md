@@ -13,3 +13,7 @@
 ```sh
 flutter pub publish --dry-run
 ```
+
+## 0.0.3
+
+- change version for update readme installation
