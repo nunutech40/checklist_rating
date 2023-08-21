@@ -4,26 +4,39 @@ import 'checkbox_default.dart';
 import 'common/extension.dart';
 import 'small_rating_white.dart';
 
-
 class ItemRowSetRating extends StatelessWidget {
+  /// The title for the checkbox.
   final String? titleChekbox;
-  final bool isChecked;
+
+  /// The initial state of the checkbox.
+  final bool setChecked;
+
+  /// A callback when the checkbox state changes.
   final void Function(bool?)? onCheckboxChanged;
+
+  /// A callback when a rating is selected.
   final void Function(int)? onRatingChecked;
-  int setRating;
+
+  /// The initial rating value.
+  final int setRating;
+
+  /// The maximum number of ratings to show. Must be between 3 and 5.
+  final int maxRatings;
 
   ItemRowSetRating({
     Key? key,
     this.titleChekbox,
-    this.isChecked = false,
+    this.setChecked = false,
     this.onRatingChecked,
     this.setRating = 0,
     this.onCheckboxChanged,
-  }) : super(key: key);
+    this.maxRatings = 5,
+  })  : assert(maxRatings >= 3 &&
+            maxRatings <= 5), // Ensuring maxRatings is between 3 and 5
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    setRating = (setRating);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -33,12 +46,11 @@ class ItemRowSetRating extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               CheckboxDeft(
-                isChecked: isChecked,
+                isChecked: setChecked,
                 onChanged: onCheckboxChanged,
               ),
               Text(
-                truncateText(titleChekbox ?? 'Title Checkbox',
-                    18), // This will show up to 15 characters before the ellipsis
+                truncateText(titleChekbox ?? 'Title Checkbox', 18),
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 14),
               ),
@@ -48,37 +60,19 @@ class ItemRowSetRating extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 24.0),
           child: Row(
-            children: [
-              SmallRatingWhite(
-                rating: '1',
-                isSelected: setRating >= 1,
-                onTap: () => onRatingChecked?.call(1),
+            children: List<Widget>.generate(
+              maxRatings,
+              (index) => Row(
+                children: [
+                  SmallRatingWhite(
+                    rating: '${index + 1}',
+                    isSelected: setRating >= index + 1,
+                    onTap: () => onRatingChecked?.call(index + 1),
+                  ),
+                  if (index != maxRatings - 1) const SizedBox(width: 8.0),
+                ],
               ),
-              const SizedBox(width: 8.0),
-              SmallRatingWhite(
-                rating: '2',
-                isSelected: setRating >= 2,
-                onTap: () => onRatingChecked?.call(2),
-              ),
-              const SizedBox(width: 8.0),
-              SmallRatingWhite(
-                rating: '3',
-                isSelected: setRating >= 3,
-                onTap: () => onRatingChecked?.call(3),
-              ),
-              const SizedBox(width: 8.0),
-              SmallRatingWhite(
-                rating: '4',
-                isSelected: setRating >= 4,
-                onTap: () => onRatingChecked?.call(4),
-              ),
-              const SizedBox(width: 8.0),
-              SmallRatingWhite(
-                rating: '5',
-                isSelected: setRating >= 5,
-                onTap: () => onRatingChecked?.call(5),
-              ),
-            ],
+            ),
           ),
         ),
       ],
